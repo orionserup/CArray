@@ -16,6 +16,7 @@
 #include <stdbool.h>
 #include <assert.h>
 
+
 /// The Data Being stored in the array
 typedef int64_t Data; 
 
@@ -27,40 +28,6 @@ typedef struct {
     size_t size;
 
 } Array;
-
-/**
- * \brief Get the Element object
- * 
- * \param array 
- * \param element 
- * \return Data 
- */
-inline Data GetElement(const Array array, const size_t element);
-
-/**
- * \brief Get the Element object
- * 
- * \param array 
- * \param element 
- * \return Data 
- */
-inline Data SetElement(const Array array, const size_t element, const Data value);
-
-/**
- * \brief Get the C Array Pointer from the Array
- * 
- * \param array 
- * \return Data* 
- */
-inline Arr GetCArr(const Array* const array);
-
-/**
- * \brief Get the Size object
- * 
- * \param array 
- * \return size_t 
- */
-inline size_t GetSize(const Array* const array);
 
 /**
  * \brief 
@@ -79,7 +46,7 @@ Array AllocArray(const size_t size);
  */
 void DeleteArray(const Array array);
 
-#define DeleteArr(arr) DeleteArray({arr, 0})
+#define DeleteArr(arr) DeleteArray((Array){arr, 0})
 
 #define ARRAY Array
 #endif

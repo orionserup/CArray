@@ -20,6 +20,23 @@
 #include <time.h>
 #include <string.h>
 
+/// Checks if a Data Type is Signed or Not
+#define issigned(t) (((t)(-1)) < ((t) 0))
+
+/// Gets the Unsigned Max of a Type
+#define umaxof(t) (((0x1ULL << ((sizeof(t) * 8ULL) - 1ULL)) - 1ULL) | \
+                    (0xFULL << ((sizeof(t) * 8ULL) - 4ULL)))
+
+/// Gets the Signed Max of a Type t
+#define smaxof(t) (((0x1ULL << ((sizeof(t) * 8ULL) - 1ULL)) - 1ULL) | \
+                    (0x7ULL << ((sizeof(t) * 8ULL) - 4ULL)))
+
+/// Gets the Maximum Value of a Type t
+#define maxof(t) ((unsigned long long) (issigned(t) ? smaxof(t) : umaxof(t)))
+
+/// Gets the Minimum Value of a Type t
+#define minof(t) ((issigned(t) * -maxof(t)) - 1 + !issigned(t)*1)
+
 // Fancy Assert For Much Easier Debug, Prints Custom Message, Line Number and File Name in Red
 #ifdef __unix__
 /// Linux/MAC Debug Assert, Adds Coloration, Messages, and File and Line Numbers for Better Debugging
@@ -37,7 +54,7 @@
  */
 Data SumArray(const Array array);
 
-#define SumArr(arr, size) SumArray((Array){ arr, size });
+#define SumArr(arr, size) SumArray((Array){ arr, size })
 
 /**
  * \brief 
@@ -47,7 +64,7 @@ Data SumArray(const Array array);
  */
 size_t FindArrayMax(const Array array);
 
-#define FindArrMax(arr, size) FindArrayMax({ arr, size })
+#define FindArrMax(arr, size) FindArrayMax((Array){ arr, size })
 
 #define ArrayMax(array) array.ptr[FindArrayMax(array)]
 #define ArrMax(arr, size) arr[FindArrMax(arr, size)] 
@@ -61,7 +78,7 @@ size_t FindArrayMax(const Array array);
 size_t FindArrayMin(const Array array);
 
 /// Wrapper for C Arrays
-#define FindArrMin(arr, size) FindArrayMin({ arr, size })
+#define FindArrMin(arr, size) FindArrayMin((Array){ arr, size })
 
 /// Shortcut
 #define ArrayMin(array) array.ptr[FindArrayMin(array)]
@@ -71,7 +88,7 @@ size_t FindArrayMin(const Array array);
 
 void FPrintArray(FILE* const file, const Array array);
 
-#define FPrintArr(arr, size) FPrintArray({arr, size})
+#define FPrintArr(arr, size) FPrintArray((Array){arr, size})
 
 #define PrintArray(array) FPrintArray(stdout, array)
 #define PrintArr(arr, size) PrintArray({arr, size})

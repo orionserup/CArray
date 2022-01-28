@@ -13,6 +13,7 @@ int main() {
         n[i] = MIN + STEP * i;
 
     BenchmarkArrayFunction(MAXSUB_BRUTE, (Array){ n, SIZE }, 2);
+    BenchmarkArrayFunction(MAXSUB_REC, (Array){ n, SIZE }, 2);
 
     return 0;
 
