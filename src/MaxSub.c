@@ -40,14 +40,14 @@ Array MaxSubArrayBrute(const Array array) {
 
 }
 
-Array MaxSubArrayRec(const Array const array) {
+Array MaxSubArrayRec(const Array array) {
 
 
-
+    return array;
 
 }
 
-Array MaxSubArrayLin(const Array const array) {
+Array MaxSubArrayLin(const Array array) {
 
 
     return array;

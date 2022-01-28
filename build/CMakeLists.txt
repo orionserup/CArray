@@ -25,4 +25,6 @@ add_executable(Benchmark ${BENCHMARK_SOURCES} ${SOURCES})
 set_target_properties(Benchmark PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ../bin)
 
+file(MAKE_DIRECTORY ../../data)
+
 target_include_directories(Benchmark PUBLIC ../include)

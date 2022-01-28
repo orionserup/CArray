@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 
 // Fancy Assert For Much Easier Debug, Prints Custom Message, Line Number and File Name in Red
 #ifdef __unix__

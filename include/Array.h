@@ -17,7 +17,7 @@
 #include <assert.h>
 
 /// The Data Being stored in the array
-typedef int32_t Data; 
+typedef int64_t Data; 
 
 typedef Data* Arr;
 
@@ -83,3 +83,4 @@ void DeleteArray(const Array array);
 
 #define ARRAY Array
 #endif
+

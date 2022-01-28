@@ -1,0 +1,18 @@
+In order to Build this you want to follow these Steps
+
+You need CMake to do this
+
+go into the build directory and run 
+
+cmake . 
+cmake --build .
+
+Or if you want to use the CMake GUI set the output directory to build
+then use the native compiler to compile it
+
+the binary will be in the bin folder
+
+
+
+
+
