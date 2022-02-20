@@ -20,11 +20,13 @@ else()
     set(CMAKE_LINK_FLAGS_RELEASE "-flto -fopenmp")
 endif()
 
-add_executable(Benchmark ${BENCHMARK_SOURCES} ${SOURCES})
-
-set_target_properties(Benchmark PROPERTIES
+option(BUILD_BENCHMARK OFF)
+if(BUILD_BENCHMARK)
+add_executable(ArrayBenchmark ${BENCHMARK_SOURCES} ${SOURCES})
+set_target_properties(ArrayBenchmark PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ../bin)
 
 file(MAKE_DIRECTORY ../../data)
+target_include_directories(ArrayBenchmark PUBLIC ../include)
+endif()
 
-target_include_directories(Benchmark PUBLIC ../include)
